@@ -22,6 +22,9 @@ list(APPEND LIBIPERF_HDRS iperf/src/iperf_api.h)
 add_library(${PROJECT_NAME} STATIC ${LIBIPERF_SRCS})
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${LIBIPERF_HDRS})
 
+find_package(OpenSSL REQUIRED)
+target_link_libraries(${PROJECT_NAME} OpenSSL::SSL OpenSSL::Crypto)
+
 add_executable(iperf3 iperf/src/main.c)
 target_link_libraries(iperf3 ${PROJECT_NAME})
 
