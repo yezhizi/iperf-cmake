@@ -15,7 +15,9 @@ cmake --build .
 If you wish to use [iperf3](https://github.com/esnet/iperf) as a dependency in your project, you can refer to the following code and add it to your `CMakeLists.txt`:
 
 ```cmake
+add_subdirectory(${CMAKE_SOURCE_DIR}/YOUR_PATH/iperf-cmake)
+
 add_executable(your_project_name main.cc)
 target_link_libraries(your_project_name iperf)
-target_precompile_headers(your_project_name PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/iperf-cmake/iperf_config.h)
+target_precompile_headers(your_project_name PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/YOUR_PATH/iperf-cmake/iperf_config.h)
 ```

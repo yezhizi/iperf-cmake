@@ -19,11 +19,13 @@ list(APPEND LIBIPERF_SRCS
     )
 list(APPEND LIBIPERF_HDRS iperf/src/iperf_api.h)
 
+find_package(Threads REQUIRED) # Find the threads library
+find_package(OpenSSL REQUIRED) # Find the OpenSSL library
+
 add_library(${PROJECT_NAME} STATIC ${LIBIPERF_SRCS})
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${LIBIPERF_HDRS})
 
-find_package(OpenSSL REQUIRED)
-target_link_libraries(${PROJECT_NAME} OpenSSL::SSL OpenSSL::Crypto)
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenSSL::SSL m OpenSSL::Crypto Threads::Threads)
 
 add_executable(iperf3 iperf/src/main.c)
 target_link_libraries(iperf3 ${PROJECT_NAME})
