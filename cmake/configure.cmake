@@ -42,6 +42,7 @@ check_include_file("sys/endian.h" HAVE_SYS_ENDIAN_H)
 check_include_file("sys/socket.h" HAVE_SYS_SOCKET_H)
 check_include_file("sys/stat.h" HAVE_SYS_STAT_H)
 check_include_file("sys/types.h" HAVE_SYS_TYPES_H)
+check_include_file("pthread.h" HAVE_PTHREAD)
 check_include_file(unistd.h HAVE_UNISTD_H)
 
 check_symbol_exists(IPV6_FLOWLABEL_MGR "linux/in6.h" HAVE_FLOWLABEL)
